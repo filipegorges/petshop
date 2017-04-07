@@ -32,6 +32,8 @@ acesse a aplicação no navegador:
 
 PS.: Tanto o diretório como o drive precisam estar compartilhados, para que seja possível montar o volume no container.
 
+Informações de como configurar o Docker estão presentes na Wiki: https://github.com/filipegorges/petshop/wiki/Dicas-de-configura%C3%A7%C3%A3o-do-Docker
+
 # Setup - Linux (Ubuntu):
 
 Dependencias:
@@ -68,4 +70,11 @@ Frontend:
   Antigo repositório, movido devido a uma falha de configuração:
   https://github.com/filipegorges/pet-shop
   
-
+  ## Itens que gostaria de ter acrescido no projeto:
+  * Redis para fazer o cache de dados do backend
+  * Ampliação da cobertura de testes
+  * Integração TravisCI/Heroku
+  * Integrar ng2-table no Angular 4 (https://github.com/valor-software/ng2-table) para mais filtros/sorting/paging
+  * Automatizar a task de coleta de raças (breed_collector) via sidekiq
+  * Integrar SemanticUI no frontend
+  
