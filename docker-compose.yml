@@ -1,0 +1,22 @@
+version: '2'
+services:
+  db:
+    image: postgres
+  frontend:
+    build:
+      context: ./petshop-frontend
+    command: ng serve --host '0.0.0.0' --port 4200 --poll=2000
+    volumes:
+      - ./petshop-frontend:/app
+    ports:
+      - "4200:4200"
+  backend:
+    build:
+      context: ./petshop_backend
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails db:create && bundle exec rails db:migrate && bundle exec rails db:setup && bundle exec rails s -p 3001 -b '0.0.0.0'"
+    volumes:
+      - ./petshop_backend:/app
+    ports:
+      - "3001:3001"
+    depends_on:
+      - db

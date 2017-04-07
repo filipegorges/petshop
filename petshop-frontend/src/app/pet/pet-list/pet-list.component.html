@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col-sm-12">
+      <div class="form-group">
+        <label for="name">Nome</label>
+        <input type="text"
+               class="form-control"
+               placeholder="Pesquisar"
+               [(ngModel)]="petParams.name"
+               (input)="filterPets()"
+        >
+      </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <th>Raça</th>
+        <th>Nome</th>
+        <th>Gênero</th>
+        <th>Castrado</th>
+        <th>Data de nascimento</th>
+        <th>Dono</th>
+        <th>Telefone</th>
+        <th>Última visita</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pet of pets">
+          <td>{{ pet.breed }}</td>
+          <td>{{ pet.name }}</td>
+          <td>{{ pet.gender }}</td>
+          <td>{{ pet.castrated }}</td>
+          <td>{{ pet.birth_date }}</td>
+          <td>{{ pet.owner_name }}</td>
+          <td>{{ pet.owner_phone_number }}</td>
+          <td>{{ pet.last_visited }}</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</div>
