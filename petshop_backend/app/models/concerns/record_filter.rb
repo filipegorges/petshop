@@ -5,16 +5,18 @@ module RecordFilter
     def search_for(filtering_params)
       return all if filtering_params.nil?
       parsed_params = JSON.parse filtering_params 
+      where(build_query(parsed_params))
+    end
+
+    private
+
+    def build_query(params)
       query = ""
-      parsed_params.each_with_index do |(column, value), index|
-        if index == parsed_params.length - 1
-          query << " #{column} ILIKE '#{value}%'"
-          break
-        else
-          query << " #{column} ILIKE '#{value}%' AND "
-        end
+      params.each_with_index do |(column, value), index|
+        query << " #{column} ILIKE '#{value}%'" # case-insensitive match
+        query << " AND " unless index == params.length - 1 # unless last item on the collection
       end
-      where(query)
+      return query
     end
   end
 end
