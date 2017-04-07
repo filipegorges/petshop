@@ -33,6 +33,8 @@ GEM
       activemodel (= 5.0.2)
       activesupport (= 5.0.2)
       arel (~> 7.0)
+    activerecord-import (0.17.2)
+      activerecord (>= 3.2)
     activesupport (5.0.2)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (~> 0.7)
@@ -49,6 +51,8 @@ GEM
     factory_girl_rails (4.8.0)
       factory_girl (~> 4.8.0)
       railties (>= 3.0.0)
+    faker (1.7.3)
+      i18n (~> 0.5)
     ffi (1.9.18)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
@@ -143,8 +147,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord-import (~> 0.17.2)
   byebug
   factory_girl_rails (~> 4.8)
+  faker (~> 1.7, >= 1.7.3)
   listen (~> 3.0.5)
   pg (~> 0.18)
   puma (~> 3.0)
