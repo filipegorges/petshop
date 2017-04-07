@@ -16,7 +16,7 @@ O que valorizamos:
 
 O seu código deve ser disponibilizado no Github, o readme deve informar como devemos fazer para rodar a aplicação localmente e para gerar os dados necessários.
 
-# setup
+# Setup - Docker
 
 Na raiz do projeto, execute:
 
@@ -29,3 +29,43 @@ e depois
 acesse a aplicação no navegador:
 
 > http://localhost:4200
+
+PS.: Tanto o diretório como o drive precisam estar compartilhados, para que seja possível montar o volume no container.
+
+# Setup - Linux (Ubuntu):
+
+Dependencias:
+
+Backend:
+> sudo apt-get update && apt-get install -y 
+>   build-essential \
+>   libpq-dev \
+>   nodejs
+Ruby 2.3.0 (https://rvm.io/rvm/install)
+
+Frontend:
+Na pasta do projeto:
+>  npm install -g @angular/cli
+>  npm install --save bootstrap
+
+Para executar o projeto:
+
+Backend: 
+  Execute o serviço do PostgreSQL na porta 5432;
+  Na pasta de arquivos do backend, em config/database.yml, altere o host default para o host de seu serviço PostgreSQL (local ou remoto);
+  Certifique-se de que a porta 3001 está aberta em seu Firewall;
+  Na pasta de arquivos do backend, execute:
+  > bundle install
+  > bash -c "rm -f tmp/pids/server.pid && bundle exec rails db:create && bundle exec rails db:migrate && bundle exec rails db:setup && bundle exec rails s -p 3001 -b '0.0.0.0'"
+  
+Frontend:
+  Certifique-se de que a porta 4200 está aberta em seu Firewall;
+  Na pasta de arquivos do frontend, execute:
+  > npm install
+  e depois
+  > ng serve --host '0.0.0.0' --port 4200 --poll=2000
+  
+  Antigo repositório, movido devido a uma falha de configuração:
+  https://github.com/filipegorges/pet-shop
+  
+
